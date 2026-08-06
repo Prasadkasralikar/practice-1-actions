@@ -1,0 +1,22 @@
+name: Lint-Test-Deploy
+on: push
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Lint
+        run: eslint --ext .jsx --fix src
+  
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test
+        run: vitest run
+
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build
+        run: vite build
+
+    
