@@ -1,7 +1,7 @@
 name: LTD
 on: push
 jobs:
-  deploy:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - name: get code
@@ -10,9 +10,29 @@ jobs:
         run: npm ci
       - name: Lint
         run: npm run lint
+
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get code
+        uses: actions/checkout@v3
+      - name: Install Dependency
+        run: npm ci
       - name: Test Code
         run: npm run test
+
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get code
+        uses: actions/checkout@v3
+      - name: Install Dependency
+        run: npm ci
       - name: Build Code
         run: npm run build
-      - name: Deploy Code
-        run: echo "Deploying....."
+      
+  Deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy
+      run: echo "Deploying........."
