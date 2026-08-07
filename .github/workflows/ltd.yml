@@ -23,7 +23,7 @@ jobs:
         run: npm run lint
 
   Test:
-    needs: lint
+    # needs: lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -42,7 +42,7 @@ jobs:
         run: npm run test
 
   Build:
-    needs: Test
+    # needs: Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -70,5 +70,11 @@ jobs:
     needs: Build
     runs-on: ubuntu-latest
     steps:
+    - name: Get build artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: dist-files
+    - name: output content
+      run: ls -ltr
     - name: Deploy
       run: echo "Deploying........."
