@@ -60,10 +60,11 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: dis-files
-          path: |
-            dist
-            package.json
+          name: dist-files
+          path: dist
+          # path: |
+          #   dist
+          #   package.json
       
   Deploy:
     needs: Build
