@@ -29,6 +29,12 @@ jobs:
     needs: Test
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '24'
+          cache: 'npm'
       - name: get code
         uses: actions/checkout@v3
       - name: Install Dependency
