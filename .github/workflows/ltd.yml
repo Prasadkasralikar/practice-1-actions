@@ -23,7 +23,7 @@ jobs:
         run: npm run lint
 
   Test:
-    # needs: lint
+    needs: lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -42,7 +42,7 @@ jobs:
         run: npm run test
 
   Build:
-    # needs: Test
+    needs: Test
     runs-on: ubuntu-latest
     outputs:
       script-file: ${{ steps.publish.outputs.script-file }}
